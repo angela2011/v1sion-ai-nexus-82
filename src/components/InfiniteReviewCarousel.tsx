@@ -21,6 +21,22 @@ const InfiniteReviewCarousel = () => {
       company: "Fortune 500 Financial Services",
       rating: 5,
       review: "The strategic roadmap V1SION developed for us was incredibly detailed and practical. Their change management approach ensured 95% adoption across our teams. The results speak for themselves - 60% faster deployment cycles."
+    },
+    {
+      id: 3,
+      name: "Venkatesh Agarwal",
+      role: "CMO",
+      company: "Technology Solutions Enterprise",
+      rating: 5,
+      review: "Working with V1SION was a revelation. Their vendor-agnostic approach saved us from costly lock-ins, and the V3RSE talent network provided exactly the expertise we needed. Highly recommend for any serious AI transformation."
+    },
+    {
+      id: 4,
+      name: "Venkatesh Agarwal",
+      role: "CMO",
+      company: "Innovation Leaders Corp",
+      rating: 5,
+      review: "V1SION's implementation methodology is unmatched. They didn't just deliver technology - they transformed our culture. The persistent memory integration has made our AI systems truly intelligent and adaptive."
     }
   ];
 
@@ -71,8 +87,8 @@ const InfiniteReviewCarousel = () => {
     </div>
   );
 
-  // Duplicate reviews multiple times for seamless infinite loop with only 2 reviews
-  const duplicatedReviews = [...reviews, ...reviews, ...reviews, ...reviews, ...reviews, ...reviews];
+  // Duplicate reviews multiple times for seamless infinite loop
+  const duplicatedReviews = [...reviews, ...reviews, ...reviews];
 
   return (
     <section className="section-spacing bg-gray-50 overflow-hidden">
