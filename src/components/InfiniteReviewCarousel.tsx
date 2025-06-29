@@ -5,57 +5,19 @@ const InfiniteReviewCarousel = () => {
   const reviews = [
     {
       id: 1,
-      name: "Rajesh Kumar",
-      role: "Chief Technology Officer",
-      company: "TechCorp India",
+      name: "Amit Rauthan",
+      role: "Head of Oncology Department",
+      company: "Leading Healthcare Institution",
       rating: 5,
-      review: "V1SION's ecosystem approach transformed our entire organization. The ROI exceeded our projections by 40%, and their V0RA platform integration gave us persistent memory capabilities we never thought possible. Absolutely game-changing.",
-      avatar: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150"
+      review: "V1SION's ecosystem approach transformed our entire organization. The ROI exceeded our projections by 40%, and their V0RA platform integration gave us persistent memory capabilities we never thought possible. Absolutely game-changing."
     },
     {
       id: 2,
-      name: "Priya Sharma",
-      role: "Head of Digital Innovation",
-      company: "FinanceFirst Solutions",
+      name: "Sanjeev Srinivas",
+      role: "FP&A Manager",
+      company: "Fortune 500 Financial Services",
       rating: 5,
-      review: "The strategic roadmap V1SION developed for us was incredibly detailed and practical. Their change management approach ensured 95% adoption across our teams. The results speak for themselves - 60% faster deployment cycles.",
-      avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150"
-    },
-    {
-      id: 3,
-      name: "Michael Chen",
-      role: "VP of Operations",
-      company: "Global Manufacturing Ltd",
-      rating: 5,
-      review: "Working with V1SION was a revelation. Their vendor-agnostic approach saved us from costly lock-ins, and the V3RSE talent network provided exactly the expertise we needed. Highly recommend for any serious AI transformation.",
-      avatar: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150"
-    },
-    {
-      id: 4,
-      name: "Anita Desai",
-      role: "Chief Data Officer",
-      company: "Healthcare Innovations",
-      rating: 5,
-      review: "V1SION's implementation methodology is unmatched. They didn't just deliver technology - they transformed our culture. The persistent memory integration has made our AI systems truly intelligent and adaptive.",
-      avatar: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150"
-    },
-    {
-      id: 5,
-      name: "David Rodriguez",
-      role: "Chief Innovation Officer",
-      company: "RetailTech Solutions",
-      rating: 5,
-      review: "The transformation we achieved with V1SION exceeded all expectations. Their systematic approach to AI integration resulted in 75% improvement in operational efficiency and completely revolutionized our customer experience.",
-      avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150"
-    },
-    {
-      id: 6,
-      name: "Sarah Thompson",
-      role: "Head of Strategy",
-      company: "Energy Innovations Corp",
-      rating: 5,
-      review: "V1SION's vendor-neutral approach was exactly what we needed. They helped us avoid costly technology lock-ins while building a truly scalable AI infrastructure. The ROI has been phenomenal.",
-      avatar: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150"
+      review: "The strategic roadmap V1SION developed for us was incredibly detailed and practical. Their change management approach ensured 95% adoption across our teams. The results speak for themselves - 60% faster deployment cycles."
     }
   ];
 
@@ -88,25 +50,16 @@ const InfiniteReviewCarousel = () => {
         "{review.review}"
       </blockquote>
 
-      {/* Client Info */}
-      <div className="flex items-center gap-4 mt-auto">
-        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200 flex-shrink-0">
-          <img 
-            src={review.avatar} 
-            alt={review.name}
-            className="w-full h-full object-cover"
-          />
+      {/* Client Info - No Profile Picture */}
+      <div className="mt-auto">
+        <div className="font-semibold text-gray-900 text-small mb-1">
+          {review.name}
         </div>
-        <div>
-          <div className="font-semibold text-gray-900 text-small">
-            {review.name}
-          </div>
-          <div className="text-tiny text-gray-600">
-            {review.role}
-          </div>
-          <div className="text-tiny text-emerald-700 font-medium">
-            {review.company}
-          </div>
+        <div className="text-tiny text-gray-600 mb-1">
+          {review.role}
+        </div>
+        <div className="text-tiny text-emerald-700 font-medium">
+          {review.company}
         </div>
       </div>
 
@@ -115,8 +68,8 @@ const InfiniteReviewCarousel = () => {
     </div>
   );
 
-  // Duplicate reviews for seamless infinite loop
-  const duplicatedReviews = [...reviews, ...reviews];
+  // Duplicate reviews multiple times for seamless infinite loop with only 2 reviews
+  const duplicatedReviews = [...reviews, ...reviews, ...reviews, ...reviews, ...reviews, ...reviews];
 
   return (
     <section className="section-spacing bg-gray-50 overflow-hidden">
