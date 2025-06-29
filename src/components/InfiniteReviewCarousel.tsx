@@ -1,7 +1,10 @@
 import React from 'react';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const InfiniteReviewCarousel = () => {
+  const navigate = useNavigate();
+
   const reviews = [
     {
       id: 1,
@@ -84,9 +87,20 @@ const InfiniteReviewCarousel = () => {
             What Our Clients Say About
             <span className="block text-gradient">Their Transformation</span>
           </h2>
-          <p className="text-body text-gray-600 fade-in-up">
+          <p className="text-body text-gray-600 fade-in-up mb-8">
             Real experiences from organizations that have transformed with V1S1ON
           </p>
+
+          {/* Our Solutions Button */}
+          <div className="fade-in-up mb-8">
+            <button 
+              onClick={() => navigate('/services')}
+              className="professional-button flex items-center justify-center gap-3 group mx-auto"
+            >
+              Our Solutions
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
         </div>
 
         {/* Infinite Carousel */}
@@ -95,28 +109,6 @@ const InfiniteReviewCarousel = () => {
             {duplicatedReviews.map((review, index) => (
               <ReviewCard key={`${review.id}-${index}`} review={review} />
             ))}
-          </div>
-        </div>
-
-        {/* Summary Stats */}
-        <div className="text-center mt-12 fade-in-up">
-          <div className="frosted-glass inline-block px-8 py-4 hover-lift">
-            <div className="flex items-center justify-center gap-6 text-tiny font-medium text-gray-600">
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1">
-                  {renderStars(5)}
-                </div>
-                <span>4.9/5 Average Rating</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-600" />
-                <span>200+ Success Stories</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-gray-900" />
-                <span>98% Client Retention</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
