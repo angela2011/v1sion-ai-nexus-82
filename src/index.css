@@ -179,6 +179,12 @@
   100% { width: 100%; }
 }
 
+/* Infinite Carousel Animation */
+@keyframes infiniteScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* Light Theme Component Classes */
 @layer components {
   .glass-card {
@@ -327,6 +333,117 @@
     border-radius: 20px;
     box-shadow: var(--shadow-soft);
   }
+
+  /* Infinite Review Carousel Styles */
+  .carousel-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 2rem;
+    animation: infiniteScroll 60s linear infinite;
+    width: fit-content;
+  }
+
+  .carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+  }
+
+  .review-card {
+    min-width: 320px;
+    max-width: 350px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.5);
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+  }
+
+  .review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-strong);
+  }
+
+  /* Mobile Responsive Adjustments */
+  @media (max-width: 768px) {
+    .carousel-track {
+      gap: 1rem;
+      animation-duration: 40s;
+    }
+
+    .review-card {
+      min-width: 280px;
+      max-width: 300px;
+      height: 380px;
+      padding: 1.25rem;
+    }
+
+    .carousel-container {
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 2%,
+        black 98%,
+        transparent 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 2%,
+        black 98%,
+        transparent 100%
+      );
+    }
+  }
+
+  /* Touch device support */
+  @media (hover: none) and (pointer: coarse) {
+    .carousel-container {
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-track {
+      animation: none;
+      scroll-snap-align: start;
+    }
+
+    .review-card {
+      scroll-snap-align: center;
+    }
+  }
 }
 
 /* Responsive Enhancements */
@@ -350,7 +467,8 @@
   .fade-in-up,
   .slide-in-left,
   .hover-lift,
-  .animated-icon {
+  .animated-icon,
+  .carousel-track {
     animation: none;
     transition: none;
   }
