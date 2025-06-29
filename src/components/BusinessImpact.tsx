@@ -73,17 +73,17 @@ const BusinessImpact = () => {
   ];
 
   const [clientStats, setClientStats] = useState({
-    fortune: 0,
-    startups: 0,
-    countries: 0,
+    toolkits: 0,
+    products: 0,
+    clients: 0,
     industries: 0
   });
 
   useEffect(() => {
     const clientTargets = {
-      fortune: 25,
-      startups: 100,
-      countries: 12,
+      toolkits: 6,
+      products: 5,
+      clients: 3,
       industries: 8
     };
 
@@ -97,9 +97,9 @@ const BusinessImpact = () => {
       const progress = Math.min(step / steps, 1);
       
       setClientStats({
-        fortune: Math.round(clientTargets.fortune * progress),
-        startups: Math.round(clientTargets.startups * progress),
-        countries: Math.round(clientTargets.countries * progress),
+        toolkits: Math.round(clientTargets.toolkits * progress),
+        products: Math.round(clientTargets.products * progress),
+        clients: Math.round(clientTargets.clients * progress),
         industries: Math.round(clientTargets.industries * progress)
       });
 
@@ -178,11 +178,11 @@ const BusinessImpact = () => {
               Transforming Organizations Across Industries
             </h3>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               {[
-                { label: "Fortune 500", value: `${clientStats.fortune}+`, color: "text-emerald-700" },
-                { label: "Startups", value: `${clientStats.startups}+`, color: "text-gray-900" },
-                { label: "Countries", value: clientStats.countries, color: "text-emerald-700" },
+                { label: "Toolkits", value: `${clientStats.toolkits}+`, color: "text-emerald-700" },
+                { label: "Products", value: `${clientStats.products}+`, color: "text-gray-900" },
+                { label: "Clients", value: `${clientStats.clients}+`, color: "text-emerald-700" },
                 { label: "Industries", value: clientStats.industries, color: "text-gray-900" }
               ].map((stat, index) => (
                 <div key={index} className="text-center">
@@ -196,10 +196,17 @@ const BusinessImpact = () => {
               ))}
             </div>
 
-            <p className="text-body text-gray-700">
+            <p className="text-body text-gray-700 mb-4">
               From enterprise transformation to startup acceleration, our proven methodology delivers consistent, 
               <span className="text-emerald-700 font-semibold"> measurable results across diverse organizational contexts</span>.
             </p>
+
+            {/* Call to Action */}
+            <div className="mt-6 pt-4 border-t border-gray-200">
+              <p className="text-body-large font-semibold text-emerald-700">
+                You can be our next success story!
+              </p>
+            </div>
           </div>
         </div>
       </div>
