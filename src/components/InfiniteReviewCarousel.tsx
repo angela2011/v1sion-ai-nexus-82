@@ -77,6 +77,17 @@ const InfiniteReviewCarousel = () => {
   return (
     <section className="section-spacing bg-gray-50 overflow-hidden">
       <div className="section-container">
+        {/* Our Solutions Button - Now positioned at the top */}
+        <div className="text-center mb-12 fade-in-up">
+          <button 
+            onClick={() => navigate('/services')}
+            className="professional-button flex items-center justify-center gap-3 group mx-auto"
+          >
+            Our Solutions
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 frosted-glass px-4 py-2 mb-6">
             <Quote className="w-4 h-4 text-emerald-700" />
@@ -87,20 +98,9 @@ const InfiniteReviewCarousel = () => {
             What Our Clients Say About
             <span className="block text-gradient">Their Transformation</span>
           </h2>
-          <p className="text-body text-gray-600 fade-in-up mb-8">
+          <p className="text-body text-gray-600 fade-in-up">
             Real experiences from organizations that have transformed with V1S1ON
           </p>
-
-          {/* Our Solutions Button */}
-          <div className="fade-in-up mb-8">
-            <button 
-              onClick={() => navigate('/services')}
-              className="professional-button flex items-center justify-center gap-3 group mx-auto"
-            >
-              Our Solutions
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </button>
-          </div>
         </div>
 
         {/* Infinite Carousel */}
