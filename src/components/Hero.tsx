@@ -93,9 +93,12 @@ const Hero = () => {
                 Schedule AI Readiness Assessment
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
               </a>
-              <button className="professional-button-secondary text-lg">
-                Book Strategic Consultation
-              </button>
+              <a 
+              href="mailto:contact@versiontwo.world" 
+              className="professional-button-secondary text-lg inline-flex items-center justify-center"
+              >
+              Book Strategic Consultation
+              </a>
             </div>
 
             {/* Redesigned Contact Info - Compact & Professional */}
