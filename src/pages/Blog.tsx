@@ -89,7 +89,7 @@ const BlogPage = () => {
                   Have questions about AI transformation in the meantime?
                 </p>
                 <div className="frosted-glass inline-block px-6 py-3 hover-lift">
-                  <span className="text-emerald-700 font-semibold">hello@v1sion.ai</span>
+                  <span className="text-emerald-700 font-semibold">contact@versiontwo.world</span>
                 </div>
               </div>
 

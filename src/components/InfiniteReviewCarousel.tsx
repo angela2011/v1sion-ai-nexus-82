@@ -32,8 +32,8 @@ const InfiniteReviewCarousel = () => {
     },
     {
       id: 4,
-      name: "Venkatesh Agarwal",
-      role: "CMO",
+      name: "Priya Desai",
+      role: "Chief Data Scientist",
       company: "Innovation Leaders Corp",
       rating: 5,
       review: "V1SION's implementation methodology is unmatched. They didn't just deliver technology - they transformed our culture. The persistent memory integration has made our AI systems truly intelligent and adaptive."

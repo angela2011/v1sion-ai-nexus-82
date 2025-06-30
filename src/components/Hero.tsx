@@ -2,15 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Mail, Phone, Sparkles } from 'lucide-react';
 
 const Hero = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       if (videoRef.current) {
         const scrolled = window.pageYOffset;
         const parallaxSpeed = 0.5;
-        
-        // Apply parallax transform to video
         videoRef.current.style.transform = `translateY(${scrolled * parallaxSpeed}px) scale(1.1)`;
       }
     };
@@ -86,10 +84,15 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12 fade-in-up">
-              <button className="professional-button group flex items-center justify-center gap-4 text-lg">
+              <a 
+                href="https://calendly.com/versiontwoworld/30min" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="professional-button group flex items-center justify-center gap-4 text-lg"
+              >
                 Schedule AI Readiness Assessment
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
-              </button>
+              </a>
               <button className="professional-button-secondary text-lg">
                 Book Strategic Consultation
               </button>
@@ -99,7 +102,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up">
               {/* Email Contact */}
               <a 
-                href="mailto:hello@v1sion.ai" 
+                href="mailto:contact@versiontwo.world" 
                 className="group inline-flex items-center gap-3 px-4 py-2.5 bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-xl hover:bg-white hover:border-emerald-200 hover:shadow-md transition-all duration-300"
               >
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 p-0.5 group-hover:scale-105 transition-transform duration-300">
@@ -108,13 +111,13 @@ const Hero = () => {
                   </div>
                 </div>
                 <span className="text-sm font-medium text-gray-700 group-hover:text-emerald-700 transition-colors duration-300">
-                  hello@v1sion.ai
+                  contact@versiontwo.world
                 </span>
               </a>
               
               {/* Phone Contact */}
               <a 
-                href="tel:+919876543210" 
+                href="tel:+91 9711390266" 
                 className="group inline-flex items-center gap-3 px-4 py-2.5 bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-xl hover:bg-white hover:border-gray-300 hover:shadow-md transition-all duration-300"
               >
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-gray-600 to-gray-700 p-0.5 group-hover:scale-105 transition-transform duration-300">
@@ -123,7 +126,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-300">
-                  +91-9876543210
+                  +91 9711390266
                 </span>
               </a>
             </div>
@@ -134,10 +137,6 @@ const Hero = () => {
                 <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
                   <div className="w-2 h-2 rounded-full bg-green-500"></div>
                   <span>Enterprise Ready</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
-                  <div className="w-2 h-2 rounded-full bg-emerald-600"></div>
-                  <span>ISO Compliant</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
                   <div className="w-2 h-2 rounded-full bg-gray-900"></div>
