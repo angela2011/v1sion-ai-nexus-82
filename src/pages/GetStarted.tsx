@@ -1,29 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
+import CalendlyWidget from '../components/CalendlyWidget';
+import CalendlyModal from '../components/CalendlyModal';
 import { ArrowRight, Mail, Phone, Rocket, Calendar, CheckCircle, Star, Users, Target, Zap } from 'lucide-react';
 
 const GetStartedPage = () => {
+  const [isCalendlyModalOpen, setIsCalendlyModalOpen] = useState(false);
+  const [selectedCalendlyUrl, setSelectedCalendlyUrl] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+
+  // Replace these with your actual Calendly URLs
+  const calendlyUrls = {
+    assessment: 'https://calendly.com/your-username/ai-readiness-assessment',
+    consultation: 'https://calendly.com/your-username/strategic-consultation',
+    demo: 'https://calendly.com/your-username/product-demo'
+  };
+
+  const openCalendlyModal = (type: 'assessment' | 'consultation' | 'demo') => {
+    setSelectedCalendlyUrl(calendlyUrls[type]);
+    setModalTitle(
+      type === 'assessment' ? 'Schedule AI Readiness Assessment' :
+      type === 'consultation' ? 'Book Strategic Consultation' :
+      'Schedule Product Demo'
+    );
+    setIsCalendlyModalOpen(true);
+  };
+
   const steps = [
     {
       icon: Calendar,
       title: "Schedule AI Readiness Assessment",
       description: "Book a comprehensive evaluation of your organization's AI maturity and transformation potential",
       duration: "60 minutes",
-      price: "Free Consultation"
+      price: "Free Consultation",
+      action: () => openCalendlyModal('assessment')
     },
     {
       icon: Target,
       title: "Strategic Roadmap Development",
       description: "Receive a customized AI transformation strategy tailored to your specific business objectives",
       duration: "2-3 weeks",
-      price: "₹50,000 - ₹2,00,000"
+      price: "₹50,000 - ₹2,00,000",
+      action: () => openCalendlyModal('consultation')
     },
     {
       icon: Rocket,
       title: "Implementation & Deployment",
       description: "Execute your AI transformation with our proven methodology and expert guidance",
       duration: "3-6 months",
-      price: "₹1,00,000 - ₹5,00,000"
+      price: "₹1,00,000 - ₹5,00,000",
+      action: () => openCalendlyModal('consultation')
     }
   ];
 
@@ -75,13 +101,19 @@ const GetStartedPage = () => {
 
               {/* Primary CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-                <button className="professional-button flex items-center justify-center gap-3 group text-lg px-8 py-4">
+                <button 
+                  onClick={() => openCalendlyModal('assessment')}
+                  className="professional-button flex items-center justify-center gap-3 group text-lg px-8 py-4"
+                >
                   <Calendar className="w-5 h-5 transition-transform group-hover:rotate-12" />
                   Schedule Free Assessment
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </button>
                 
-                <button className="professional-button-secondary flex items-center justify-center gap-3 text-lg px-8 py-4">
+                <button 
+                  onClick={() => openCalendlyModal('consultation')}
+                  className="professional-button-secondary flex items-center justify-center gap-3 text-lg px-8 py-4"
+                >
                   <Rocket className="w-5 h-5 text-emerald-700" />
                   Book Strategic Consultation
                 </button>
@@ -111,8 +143,33 @@ const GetStartedPage = () => {
           </div>
         </section>
 
-        {/* Process Steps */}
+        {/* Embedded Calendly Section */}
         <section className="section-spacing bg-gray-50">
+          <div className="section-container">
+            <div className="text-center mb-12">
+              <h2 className="text-section-title text-gray-900 mb-4 fade-in-up">
+                Schedule Your
+                <span className="block text-gradient">Free Consultation</span>
+              </h2>
+              <p className="text-body-large text-gray-600 fade-in-up">
+                Choose a time that works best for you
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <div className="frosted-glass p-6 hover-lift">
+                <CalendlyWidget 
+                  url={calendlyUrls.assessment}
+                  height={700}
+                  className="w-full rounded-lg overflow-hidden"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Process Steps */}
+        <section className="section-spacing bg-white">
           <div className="section-container">
             <div className="text-center mb-12">
               <h2 className="text-section-title text-gray-900 mb-4 fade-in-up">
@@ -158,6 +215,14 @@ const GetStartedPage = () => {
                       <span className="font-semibold text-emerald-700">{step.price}</span>
                     </div>
 
+                    {/* Schedule Button */}
+                    <button 
+                      onClick={step.action}
+                      className="w-full professional-button text-center mb-4"
+                    >
+                      Schedule Now
+                    </button>
+
                     {/* Progress Indicator */}
                     <div className="bg-gray-200 rounded-full h-1 overflow-hidden">
                       <div 
@@ -173,7 +238,7 @@ const GetStartedPage = () => {
         </section>
 
         {/* What's Included */}
-        <section className="section-spacing bg-white">
+        <section className="section-spacing bg-gray-50">
           <div className="section-container">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -221,7 +286,7 @@ const GetStartedPage = () => {
         </section>
 
         {/* Testimonials */}
-        <section className="section-spacing bg-gray-50">
+        <section className="section-spacing bg-white">
           <div className="section-container">
             <div className="text-center mb-12">
               <h2 className="text-section-title text-gray-900 mb-4 fade-in-up">
@@ -256,7 +321,7 @@ const GetStartedPage = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="section-spacing bg-white">
+        <section className="section-spacing bg-gray-50">
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center">
               <div className="frosted-glass p-8 hover-lift">
@@ -267,13 +332,19 @@ const GetStartedPage = () => {
                   Schedule your free AI readiness assessment today and take the first step towards becoming an AI-native organization.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="professional-button flex items-center justify-center gap-3">
+                  <button 
+                    onClick={() => openCalendlyModal('assessment')}
+                    className="professional-button flex items-center justify-center gap-3"
+                  >
                     <Calendar className="w-5 h-5" />
                     Schedule Free Assessment
                     <ArrowRight className="w-5 h-5" />
                   </button>
-                  <button className="professional-button-secondary">
-                    Download AI Readiness Guide
+                  <button 
+                    onClick={() => openCalendlyModal('demo')}
+                    className="professional-button-secondary"
+                  >
+                    Schedule Product Demo
                   </button>
                 </div>
               </div>
@@ -282,7 +353,7 @@ const GetStartedPage = () => {
         </section>
 
         {/* Trust Indicators */}
-        <section className="section-spacing bg-gray-50">
+        <section className="section-spacing bg-white">
           <div className="section-container">
             <div className="text-center">
               <div className="frosted-glass inline-block px-8 py-4 hover-lift">
@@ -305,6 +376,14 @@ const GetStartedPage = () => {
           </div>
         </section>
       </div>
+
+      {/* Calendly Modal */}
+      <CalendlyModal
+        isOpen={isCalendlyModalOpen}
+        onClose={() => setIsCalendlyModalOpen(false)}
+        calendlyUrl={selectedCalendlyUrl}
+        title={modalTitle}
+      />
     </div>
   );
 };

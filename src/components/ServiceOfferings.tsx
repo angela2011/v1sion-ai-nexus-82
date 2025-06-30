@@ -1,8 +1,10 @@
-
 import React from 'react';
 import { CheckCircle, Zap, Star, Crown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ServiceOfferings = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
       icon: Zap,
@@ -62,6 +64,10 @@ const ServiceOfferings = () => {
       ]
     }
   ];
+
+  const handleGetStarted = () => {
+    navigate('/get-started');
+  };
 
   return (
     <section id="services" className="section-spacing bg-gray-50">
@@ -132,8 +138,11 @@ const ServiceOfferings = () => {
                   ))}
                 </ul>
 
-                {/* CTA Button */}
-                <button className="w-full professional-button text-center">
+                {/* CTA Button - Now links to Get Started page */}
+                <button 
+                  onClick={handleGetStarted}
+                  className="w-full professional-button text-center"
+                >
                   Get Started
                 </button>
 
