@@ -1,172 +1,100 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
-import { BookOpen, Calendar, User, ArrowRight, TrendingUp, Lightbulb, Target } from 'lucide-react';
+import { BookOpen, Clock, Bell, ArrowRight } from 'lucide-react';
 
 const BlogPage = () => {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Future of AI-Native Organizations: 5 Key Trends for 2025",
-      excerpt: "Explore the emerging trends that will define AI-native organizations in the coming year, from autonomous decision-making to ethical AI frameworks.",
-      author: "V1S1ON Team",
-      date: "December 15, 2024",
-      readTime: "8 min read",
-      category: "Strategy",
-      icon: TrendingUp,
-      image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800"
-    },
-    {
-      id: 2,
-      title: "Building Persistent Memory Systems: The V0RA Platform Advantage",
-      excerpt: "Deep dive into how persistent memory integration transforms AI systems from reactive tools to proactive intelligence partners.",
-      author: "Technical Team",
-      date: "December 10, 2024",
-      readTime: "12 min read",
-      category: "Technology",
-      icon: Lightbulb,
-      image: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=800"
-    },
-    {
-      id: 3,
-      title: "ROI Measurement in AI Transformation: Beyond the Hype",
-      excerpt: "Learn how to establish meaningful metrics and KPIs that demonstrate real business value from your AI transformation initiatives.",
-      author: "Strategy Team",
-      date: "December 5, 2024",
-      readTime: "10 min read",
-      category: "Business",
-      icon: Target,
-      image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800"
-    }
-  ];
-
-  const categories = ["All", "Strategy", "Technology", "Business", "Case Studies"];
-
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
       <div className="pt-20">
-        {/* Hero Section */}
-        <section className="section-spacing bg-white">
+        {/* Coming Soon Section */}
+        <section className="min-h-screen flex items-center justify-center bg-white">
           <div className="section-container">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 frosted-glass px-4 py-2 mb-6">
-                <BookOpen className="w-4 h-4 text-emerald-700" />
-                <span className="text-tiny font-medium text-gray-700 uppercase tracking-wider">Insights & Expertise</span>
-              </div>
+            <div className="max-w-4xl mx-auto text-center">
               
-              <h1 className="text-section-title text-gray-900 mb-4 fade-in-up">
-                AI Transformation
-                <span className="block text-gradient">Insights</span>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 frosted-glass px-6 py-3 mb-8 hover-lift">
+                <BookOpen className="w-5 h-5 text-emerald-700 animated-icon" />
+                <span className="text-sm font-semibold text-gray-800 uppercase tracking-wider">AI Insights & Expertise</span>
+              </div>
+
+              {/* Main Heading */}
+              <h1 className="text-5xl md:text-7xl font-tomorrow font-medium text-gray-900 mb-6 fade-in-up leading-tight">
+                <span className="block">Coming</span>
+                <span className="block bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-700 bg-clip-text text-transparent mt-2">
+                  Soon
+                </span>
               </h1>
-              <p className="text-body-large text-gray-600 fade-in-up max-w-3xl mx-auto">
-                Expert perspectives on AI strategy, implementation, and the future of intelligent organizations
+              
+              {/* Subtitle */}
+              <p className="text-2xl md:text-3xl font-agile text-gray-600 mb-8 max-w-3xl mx-auto fade-in-up leading-relaxed" style={{animationDelay: '0.2s'}}>
+                Expert insights on AI transformation, strategy, and the future of intelligent organizations
               </p>
-            </div>
 
-            {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category, index) => (
-                <button
-                  key={index}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    index === 0 
-                      ? 'bg-emerald-700 text-white' 
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
+              {/* Description */}
+              <p className="text-body-large text-gray-600 mb-12 max-w-2xl mx-auto fade-in-up" style={{animationDelay: '0.4s'}}>
+                We're crafting thoughtful content to help you navigate your AI transformation journey. 
+                Stay tuned for in-depth articles, case studies, and strategic insights.
+              </p>
 
-        {/* Blog Posts Grid */}
-        <section className="section-spacing bg-gray-50">
-          <div className="section-container">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post, index) => (
-                <article key={post.id} className="group fade-in-up" style={{animationDelay: `${0.1 * index}s`}}>
-                  <div className="frosted-glass overflow-hidden hover-lift h-full">
-                    {/* Post Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={post.image} 
-                        alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-white/90 text-emerald-700 text-tiny font-bold rounded-full">
-                          {post.category}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Post Content */}
-                    <div className="p-6">
-                      <div className="flex items-center gap-4 text-tiny text-gray-600 mb-4">
-                        <div className="flex items-center gap-2">
-                          <User className="w-4 h-4" />
-                          <span>{post.author}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
-                          <span>{post.date}</span>
+              {/* Coming Soon Features */}
+              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+                {[
+                  {
+                    icon: BookOpen,
+                    title: "Strategic Insights",
+                    description: "Deep-dive articles on AI transformation strategies and best practices"
+                  },
+                  {
+                    icon: Clock,
+                    title: "Case Studies",
+                    description: "Real-world examples of successful AI implementations and lessons learned"
+                  },
+                  {
+                    icon: Bell,
+                    title: "Industry Trends",
+                    description: "Latest developments in AI technology and their business implications"
+                  }
+                ].map((feature, index) => (
+                  <div key={index} className="group fade-in-up" style={{animationDelay: `${0.6 + 0.1 * index}s`}}>
+                    <div className="frosted-glass p-6 hover-lift h-full">
+                      <div className="w-12 h-12 rounded-full bg-gray-100 p-0.5 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+                          <feature.icon className="w-6 h-6 text-emerald-700" />
                         </div>
                       </div>
-
                       <h3 className="text-subsection-title text-gray-900 mb-3 group-hover:text-emerald-700 transition-colors duration-300">
-                        {post.title}
+                        {feature.title}
                       </h3>
-                      
-                      <p className="text-small text-gray-600 mb-4 leading-relaxed">
-                        {post.excerpt}
+                      <p className="text-small text-gray-600 leading-relaxed">
+                        {feature.description}
                       </p>
-
-                      <div className="flex items-center justify-between">
-                        <span className="text-tiny text-gray-500">{post.readTime}</span>
-                        <button className="flex items-center gap-2 text-emerald-700 font-medium text-small hover:gap-3 transition-all duration-300">
-                          Read More
-                          <ArrowRight className="w-4 h-4" />
-                        </button>
-                      </div>
                     </div>
                   </div>
-                </article>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            {/* Load More Button */}
-            <div className="text-center mt-12">
-              <button className="professional-button">
-                Load More Articles
-              </button>
-            </div>
-          </div>
-        </section>
+              {/* Notify Me Button */}
+              <div className="fade-in-up" style={{animationDelay: '1s'}}>
+                <button className="professional-button flex items-center justify-center gap-3 group mx-auto text-lg px-8 py-4">
+                  <Bell className="w-5 h-5 transition-transform group-hover:rotate-12" />
+                  Notify Me When Available
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
 
-        {/* Newsletter Signup */}
-        <section className="section-spacing bg-white">
-          <div className="section-container">
-            <div className="max-w-2xl mx-auto text-center">
-              <div className="frosted-glass p-8 hover-lift">
-                <h3 className="text-subsection-title text-gray-900 mb-4">
-                  Stay Updated with AI Insights
-                </h3>
-                <p className="text-body text-gray-600 mb-6">
-                  Get the latest insights on AI transformation, strategy, and implementation delivered to your inbox.
+              {/* Contact Info */}
+              <div className="mt-12 fade-in-up" style={{animationDelay: '1.2s'}}>
+                <p className="text-body text-gray-600 mb-4">
+                  Have questions about AI transformation in the meantime?
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <input
-                    type="email"
-                    placeholder="Enter your email address"
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-transparent"
-                  />
-                  <button className="professional-button whitespace-nowrap">
-                    Subscribe Now
-                  </button>
+                <div className="frosted-glass inline-block px-6 py-3 hover-lift">
+                  <span className="text-emerald-700 font-semibold">hello@v1sion.ai</span>
                 </div>
               </div>
+
+              {/* Animated Background Elements */}
+              <div className="absolute inset-0 digital-mesh opacity-5 pointer-events-none" />
             </div>
           </div>
         </section>
